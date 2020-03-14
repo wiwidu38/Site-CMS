@@ -10,8 +10,7 @@
   <div id="content">
     <?php
     if (isset($_SESSION['login'])){
-      echo '<p>Cliquer <a href="reservation.php">ici</a> pour reserver une table.</p>';
-      echo '<p>Cliquer <a href="gerer.php">ici</a> pour gerer une reservation.</p>';
+
     }else{
       echo '<p>Merci de vous connecter pour acceder a la page</p>';
     }

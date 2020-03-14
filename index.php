@@ -6,14 +6,10 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    HEADER
-  </header>
+    <?php include 'header.php';  ?>
   <div id="content">
-    
+
   </div>
-  <footer>
-    FOOTER
-  </footer>
+  <?php include 'footer.php';  ?>
 </body>
 </html>

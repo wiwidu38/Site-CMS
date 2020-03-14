@@ -71,86 +71,6 @@ if (isset($pseudo,$pass))
 }
 ?>
 
-<!doctype html>
-<html lang="fr">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Formulaire de connexion</title>
-<!--[if IE]>
-<style type="text/css">
-   body {background-color: #cccccc !important;}
-/style>
-<![endif]-->
-<style type="text/css">
-<!--
-body, p, h1,form, input, fieldset
-{
-  margin:0;
-  padding:0;
-}
-
-body
-{
-  background-color: #F4F4F4;
-}
-
-#connexion
-{
-  width:400px;
-  background:#FFFFFF;
-  margin:20px auto;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size:1em;
-  border:1px solid #ccc;
-  border-radius:10px;
-}
-
-#connexion fieldset
-{
-  text-align:center;
-  font-size:1.2em;
-  background:#333333;
-  padding-bottom:5px;
-  margin-bottom:15px;
-  color:#FFFFFF;
-  letter-spacing:0.05em;
-  border-top-left-radius:10px;
-  border-top-right-radius:10px;
-  border:1;
-}
-
-#connexion p
-{
-  padding-top:15px;
-  padding-right:50px;
-  text-align:right;
-}
-
-#connexion input
-{
-  margin-left:30px;
-  width:150px;
-}
-
-#connexion #valider
-{
-  width:155px;
-  font-size:0.8em;
-}
-
-#connexion #message
-{
-  height:27px;
-  color:#F00;
-  font-size:0.8em;
-  font-weight:bold;
-  text-align:center;
-  padding:10px 0 0 0;
-}
--->
-</style>
-</head>
-<body>
 <div id = "connexion">
     <form action = "#" method="post">
     <fieldset>Connexion</fieldset>
@@ -158,7 +78,7 @@ body
     <p><label for="pass">Mot de passe : </label><input type="password" name="pass" id="pass" /></p>
     <p><input type="submit" value="Envoyer" id = "valider" /></p>
     </form>
-    <p id = "message"><?= $message?:'' ?></p>
+    <?php if($message != ''){
+      echo '<p id = "message"> '.$message.' </p>';
+    } ?>
 </div>
-</body>
-</html>

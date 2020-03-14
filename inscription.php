@@ -6,69 +6,75 @@ header('Content-type: text/html; charset=UTF-8');
 $message = null;
 
 /* Récupération des variables issues du formulaire par la méthode post*/
-$pseudo = filter_input(INPUT_POST, 'pseudo');
-$pass = filter_input(INPUT_POST, 'pass');
+$pseudo = filter_input(INPUT_POST, 'pseudoi');
+$pass = filter_input(INPUT_POST, 'passi');
+$pass2 = filter_input(INPUT_POST, 'pass2i');
 
 /* Si le formulaire est envoyé */
-if (isset($pseudo,$pass))
+if (isset($pseudo,$pass,$pass2))
 {
 
     /* Teste que les valeurs ne sont pas vides ou composées uniquement d'espaces  */
     $pseudo = trim($pseudo) != '' ? $pseudo : null;
     $pass = trim($pass) != '' ? $pass : null;
+    $pass2 = trim($pass2) != '' ? $pass2 : null;
 
 
-    /* Si $pseudo et $pass différents de null */
-    if(isset($pseudo,$pass))
+    /* Si $pseudo et $pass et $pass2 différents de null */
+    if(isset($pseudo,$pass,$pass2))
     {
-
-      include 'connexionbd.php';
-
-    /* Requête pour compter le nombre d'enregistrements répondant à la clause : champ du pseudo de la table = pseudo posté dans le formulaire */
-    $requete = "SELECT count(*) FROM membres WHERE pseudo = ?";
-
-    try
-    {
-      /* préparation de la requête*/
-      $req_prep = $connect->prepare($requete);
-
-      /* Exécution de la requête en passant la position du marqueur et sa variable associée dans un tableau*/
-      $req_prep->execute(array(0=>$pseudo));
-
-      /* Récupération du résultat */
-      $resultat = $req_prep->fetchColumn();
-
-      if ($resultat == 0)
-      /* Résultat du comptage = 0 pour ce pseudo, on peut donc l'enregistrer */
+      if($pass == $pass2)
       {
-        /* Pour enregistrer la date actuelle (date/heure/minutes/secondes) on peut utiliser directement la fonction mysql : NOW()*/
-        $insertion = "INSERT INTO membres(pseudo,pass,date_enregistrement) VALUES(:nom, :password, NOW())";
+        include 'connexionbd.php';
 
-        /* préparation de l'insertion */
-        $insert_prep = $connect->prepare($insertion);
+      /* Requête pour compter le nombre d'enregistrements répondant à la clause : champ du pseudo de la table = pseudo posté dans le formulaire */
+      $requete = "SELECT count(*) FROM membres WHERE pseudo = ?";
 
-        /* Exécution de la requête en passant les marqueurs et leur variables associées dans un tableau*/
-        $inser_exec = $insert_prep->execute(array(':nom'=>$pseudo,':password'=>$pass));
+      try
+      {
+        /* préparation de la requête*/
+        $req_prep = $connect->prepare($requete);
 
-        /* Si l'insertion s'est faite correctement...*/
-        if ($inser_exec === true)
+        /* Exécution de la requête en passant la position du marqueur et sa variable associée dans un tableau*/
+        $req_prep->execute(array(0=>$pseudo));
+
+        /* Récupération du résultat */
+        $resultat = $req_prep->fetchColumn();
+
+        if ($resultat == 0)
+        /* Résultat du comptage = 0 pour ce pseudo, on peut donc l'enregistrer */
         {
-          /* Démarre une session si aucune n'est déjà existante et enregistre le pseudo dans la variable de session $_SESSION['login'] qui donne au visiteur la possibilité de se connecter.  */
-          if (!session_id()) session_start();
-          $_SESSION['login'] = $pseudo;
+          /* Pour enregistrer la date actuelle (date/heure/minutes/secondes) on peut utiliser directement la fonction mysql : NOW()*/
+          $insertion = "INSERT INTO membres(pseudo,pass,date_enregistrement) VALUES(:nom, :password, NOW())";
 
-          header("Location: connexion.php");
-          exit();
+          /* préparation de l'insertion */
+          $insert_prep = $connect->prepare($insertion);
+
+          /* Exécution de la requête en passant les marqueurs et leur variables associées dans un tableau*/
+          $inser_exec = $insert_prep->execute(array(':nom'=>$pseudo,':password'=>$pass));
+
+          /* Si l'insertion s'est faite correctement...*/
+          if ($inser_exec === true)
+          {
+            /* Démarre une session si aucune n'est déjà existante et enregistre le pseudo dans la variable de session $_SESSION['login'] qui donne au visiteur la possibilité de se connecter.  */
+            if (!session_id()) session_start();
+            $_SESSION['login'] = $pseudo;
+
+            header("Location: index.php");
+            exit();
+          }
+        }
+        else
+        {   /* Le pseudo est déjà utilisé */
+          $message = 'Ce pseudo est déjà utilisé, changez-le.';
         }
       }
-      else
-      {   /* Le pseudo est déjà utilisé */
-        $message = 'Ce pseudo est déjà utilisé, changez-le.';
+      catch (PDOException $e)
+      {
+        $message = 'Problème dans la requête d\'insertion';
       }
-    }
-    catch (PDOException $e)
-    {
-      $message = 'Problème dans la requête d\'insertion';
+    }else{
+      $message = 'Les mots de passes ne correspondent pas';
     }
   }
   else
@@ -77,89 +83,16 @@ if (isset($pseudo,$pass))
   }
 }
 ?>
-<!doctype html>
-<html lang="fr">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Formulaire d'inscription - tutoriel PHP France</title>
 
-<style type="text/css">
-<!--
-body, p, h1,form, input, fieldset
-{
-  margin:0;
-  padding:0;
-}
-
-body
-{
-  background-color: #F4F4F4;
-}
-
-#inscription
-{
-  width:400px;
-  background:#FFFFFF;
-  margin:20px auto;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size:1em;
-  border:1px solid #ccc;
-  border-radius:10px;
-}
-
-#inscription fieldset
-{
-  text-align:center;
-  font-size:1.2em;
-  background:#333333;
-  padding-bottom:5px;
-  margin-bottom:15px;
-  color:#FFFFFF;
-  letter-spacing:0.05em;
-  border-top-left-radius:10px;
-  border-top-right-radius:10px;
-}
-
-#inscription p
-{
-  padding-top:15px;
-  padding-right:50px;
-  text-align:right;
-}
-
-#inscription input
-{
-  margin-left:30px;
-  width:150px;
-}
-
-#inscription #valider
-{
-  width:155px;
-  font-size:0.8em;
-}
-
-#inscription #message
-{
-  height:27px;
-  color:#F00;
-  font-size:0.8em;
-  font-weight:bold;
-  text-align:center;
-  padding:10px 0 0 0;
-}
--->
-</style>
-</head>
-<body>
-<div id = "inscription">
+<div id = "connexion">
     <form action = "#" method = "post">
-    <fieldset>Inscription</fieldset>
-    <p><label for = "pseudo">Pseudo : </label><input type = "text" name = "pseudo" id = "pseudo" /></p>
-    <p><label for = "pass">Mot de passe : </label><input type = "password" name = "pass" id = "pass" /></p>
+    <fieldset>inscription</fieldset>
+    <p><label for = "pseudo">Pseudo : </label><input type = "text" name = "pseudoi" id = "pseudo" /></p>
+    <p><label for = "pass">Mot de passe : </label><input type = "password" name = "passi" id = "pass" /></p>
+    <p><label for = "pass2">Confirmer : </label><input type = "password" name = "pass2i" id = "pass" /></p>
     <p><input type = "submit" value = "Envoyer" id = "valider" /></p>
     </form>
-    <p id = "message"><?= $message?:'' ?></p>
+    <?php if($message != ''){
+      echo '<p id = "message"> '.$message.' </p>';
+    } ?>
 </div>
-</body>
-</html>
