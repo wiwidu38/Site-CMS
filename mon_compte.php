@@ -6,7 +6,8 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <?php include 'header.php';  ?>
+    <?php $page = basename(__FILE__);
+    include 'header.php';  ?>
   <div id="content">
     <?php
     if (isset($_SESSION['login'])){

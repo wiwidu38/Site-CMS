@@ -8,7 +8,7 @@
 <body>
     <?php include 'header.php';  ?>
   <div id="content">
-
+    <a href="mon_compte.php">mon compte</a>
   </div>
   <?php include 'footer.php';  ?>
 </body>
