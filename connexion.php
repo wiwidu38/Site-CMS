@@ -44,6 +44,7 @@ if (isset($pseudo,$pass))
       {
         /* Démarre une session si aucune n'est déjà existante et enregistre le pseudo dans la variable de session $_SESSION['login'] qui donne au visiteur la possibilité de se connecter.  */
         if (!session_id()) session_start();
+        $_SESSION['login'] = $pseudo;
         header ('location: index.php');
         exit();
       }
