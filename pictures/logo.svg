@@ -1,0 +1,19 @@
+<svg  height="110" width="275" viewBox="0 0 275 110" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="logo" fill="none" stroke="#30a405" stroke-width="8" stroke-linejoin="round">
+        <g id="logo_4" >
+            <polyline points="60,100 60,15 15,70 40,70" />
+            <polyline points="60,70 75,70" />
+        </g>
+
+        <g id="logo_0"  transform="translate(150,25)" >
+            <path d="M 10 0 A 35 35 0 1 1 -30 0" />
+            <line x1="-10" x2="-10" y1="-15" y2="15" />
+        </g>
+        
+        <g id="logo_5" transform="translate(200)">
+            <polyline points="65,15 15,15 15,40 30,41" />
+            <path d="M 52 48 a 10 10 0 0 1 -40 40" />
+            
+        </g>
+    </g>
+</svg>

@@ -1,3 +1,3 @@
 <footer>
-  Tout droits reservés à moi
+  <p>Tout droits reservés à moi</p>
 </footer>
