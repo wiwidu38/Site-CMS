@@ -84,15 +84,15 @@ if (isset($pseudo,$pass,$pass2))
 }
 ?>
 
-<div id = "connexion">
-    <form action = "#" method = "post">
-    <fieldset>inscription</fieldset>
-    <p><label for = "pseudo">Pseudo : </label><input type = "text" name = "pseudoi" id = "pseudo" /></p>
-    <p><label for = "pass">Mot de passe : </label><input type = "password" name = "passi" id = "pass" /></p>
-    <p><label for = "pass2">Confirmer : </label><input type = "password" name = "pass2i" id = "pass" /></p>
-    <p><input type = "submit" value = "Envoyer" id = "valider" /></p>
-    </form>
-    <?php if($message != ''){
-      echo '<p id = "message"> '.$message.' </p>';
-    } ?>
-</div>
+<section id = "connexion" class="wrapper-grey">
+  <h2>Register</h2>
+  <form action = "#" method = "post">
+  <p><label for = "pseudo">Pseudo : </label><input class="text" type = "text" name = "pseudoi" id = "pseudo" /></p>
+  <p><label for = "pass">Password : </label><input class="text" type = "password" name = "passi" id = "pass" /></p>
+  <p><label for = "pass2">Confir Password : </label><input class="text" type = "password" name = "pass2i" id = "pass" /></p>
+  <p><input class="button" type = "submit" value = "Envoyer" id = "valider" /></p>
+  </form>
+  <?php if($message != ''){
+    echo '<p id = "message"> '.$message.' </p>';
+  } ?>
+</section>

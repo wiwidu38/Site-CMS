@@ -70,14 +70,14 @@ if (isset($pseudo,$pass))
 }
 ?>
 
-<div id = "connexion">
+<section id = "connexion" class="wrapper-green">
+    <h2>Log In</h2>
     <form action = "#" method="post">
-    <fieldset>Connexion</fieldset>
-    <p><label for="pseudo">Pseudo : </label><input type="text" name="pseudo" id="pseudo" /></p>
-    <p><label for="pass">Mot de passe : </label><input type="password" name="pass" id="pass" /></p>
-    <p><input type="submit" value="Envoyer" id = "valider" /></p>
+      <p><label for="pseudo">Pseudo : </label><input class="text" type="text" name="pseudo" id="pseudo" /></p>
+      <p><label for="pass">Password : </label><input class="text" type="password" name="pass" id="pass" /></p>
+      <p><input class="button" type="submit" value="Log In" id = "valider" /></p>
     </form>
     <?php if($message != ''){
       echo '<p id = "message"> '.$message.' </p>';
     } ?>
-</div>
+</section>

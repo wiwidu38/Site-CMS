@@ -5,14 +5,23 @@
     </a>
     
     <ul>
-      <li><a href="#location">Bar location</a></li>
-      <li><a href="#concept">Concept</a></li>
+      <li><a href="#concept">Booking</a></li>
       <li><a href="#menu">Menu</a></li>
-      <li><a href="#opening">Opening hours</a></li>
-      <li><a href="#rewards">Rewards</a></li>
-      <li><a href="#event">Next events</a></li>
-      <li><a href="pageConnexion.php">Login</a></li>
-      <li><a href="pageConnexion.php">Register</a></li>
+      <li><a href="#opening">Leaderboard</a></li>
+      <li><a href="#rewards">Events</a></li>
+      <li><a href="#event">Bar Information</a></li>
+      <li><a href="pageConnexion.php">Reload</a></li>
     </ul>
+
+    <div class="headerRight">
+        <div class="headerProgress">
+            <div id="progress">
+                
+            </div>
+        </div>
+        <div class="headerProfile">
+            <p>%USERNAME%</p>
+        </div>
+    </div>
   </nav>
 </header>

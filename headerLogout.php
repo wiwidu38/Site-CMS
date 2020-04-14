@@ -5,14 +5,13 @@
     </a>
     
     <ul>
-      <li><a href="#location">Bar location</a></li>
-      <li><a href="#concept">Concept</a></li>
-      <li><a href="#menu">Menu</a></li>
-      <li><a href="#opening">Opening hours</a></li>
-      <li><a href="#rewards">Rewards</a></li>
-      <li><a href="#event">Next events</a></li>
+      <li><a href="index.php#location">Bar location</a></li>
+      <li><a href="index.php#concept">Concept</a></li>
+      <li><a href="index.php#menu">Menu</a></li>
+      <li><a href="index.php#opening">Opening hours</a></li>
+      <li><a href="index.php#rewards">Rewards</a></li>
+      <li><a href="index.php#event">Next events</a></li>
       <li><a href="pageConnexion.php">Login</a></li>
-      <li><a href="pageConnexion.php">Register</a></li>
     </ul>
   </nav>
 </header>

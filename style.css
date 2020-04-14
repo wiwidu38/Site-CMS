@@ -3,7 +3,7 @@
   padding: 0;
 }
 
-h1, h2, h3, p, ul{
+h1, h2, h3, p, ul, input, .headerRight{
   font-family: Helvetica, Arial, sans-serif;
 }
 
@@ -28,6 +28,7 @@ header nav{
 header nav ul{
   display: flex;
   list-style: none;
+
 }
 
 header nav ul li{
@@ -156,6 +157,24 @@ section#opening #schedule li{
   margin-bottom: 1%;
 }
 
+/*------ EXP ------*/
+
+.headerRight {
+	justify-content: flex-end;
+  width: 40%;
+  display: flex;
+	align-items: center;
+}
+
+.headerProgress {
+	margin-right: 20px;
+}
+
+.headerProgress:first-child {
+	width: 75px;
+	height: 75px;
+}
+
 
 /*---------- FOOTER ----------*/
 
@@ -165,3 +184,35 @@ footer{
   background-color: #303040;
 }
 
+/*---------- LOG IN ----------*/
+
+form input.text{
+  color:#ffffff;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 2px rgba(255, 255, 255, 0.2) solid;
+  border-radius: 5px;
+  padding: 1em 1em 1em 1em;
+  margin: 0.7em 0 2em 0;
+  width:70%
+}
+
+.button{
+  text-transform: uppercase;
+  padding: 0.7em 1.2em 0.7em 1.2em;
+  margin-top: 0.7em;
+  cursor: pointer;
+  background-color: #00000000;
+  color: #ffffff;
+  border: 1px rgba(228, 228, 246, 0.4) solid;
+  border-radius: 100px;
+  font-weight: bold;
+  font-size: 1em;
+  letter-spacing: 1px;
+
+  transition: background-color 300ms, border 300ms;
+}
+
+.button:hover{
+  border: 1px #E4E4F6 solid;
+  background-color: rgba(228, 228, 246, 0.05);
+}

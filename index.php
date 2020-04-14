@@ -54,4 +54,9 @@
     </div>
   <?php include 'footer.php';  ?>
 </body>
+
+<script src="progress.js"></script>
+<script src="jquery.js"></script>
+<script src="script.js"></script>
+
 </html>

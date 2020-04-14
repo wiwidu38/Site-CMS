@@ -6,6 +6,9 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <?php include 'header.php'; ?>
+
+    <div id="content">
     <?php
         session_start();
         if(!isset($page))
@@ -20,5 +23,7 @@
         }
         ?>
         <a href="mon_compte.php">mon compte</a>
+    </div>
+    
 </body>
 </html>
